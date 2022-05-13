@@ -33,8 +33,7 @@ function FeedbackForm() {
       <form>
         <h2>Please Provide Your Feedback</h2>
 
-        {/* TO-DO:Rating Component */}
-        <RatingSelect/>
+        <RatingSelect select={(rating)=>setRating(rating)}/>
 
         <div className="input-group">
           <input
