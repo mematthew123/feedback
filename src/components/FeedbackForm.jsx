@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Button from './shared/Button'
 import RatingSelect from './RatingSelect'
 
-function FeedbackForm() {
+function FeedbackForm({handleAdd}) {
   const [text, setText] = useState('')
   const [rating, setRating] = useState(10)
 
@@ -28,13 +28,26 @@ function FeedbackForm() {
     setText(e.target.value)
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(text.trim().length <= 10) {
+      const newFeedback = {
+        text: text,
+        rating: rating
+      }
+  handleAdd(newFeedback)  // this is the function passed down from the parent 
+      setText('')
+  
+  
+  }
+
   return (
     <Card>
       <form>
         <h2>Please Provide Your Feedback</h2>
 
         {/* TO-DO:Rating Component */}
-        <RatingSelect/>
+        <RatingSelect select={(rating)=>setRating}/>
 
         <div className="input-group">
           <input
@@ -54,5 +67,5 @@ function FeedbackForm() {
     </Card>
   )
 }
-
+}
 export default FeedbackForm
