@@ -12,6 +12,8 @@ function App() {
     newFeedback.id = uuidv4()
     setFeedback([...feedback, newFeedback])
   }
+
+  // sets the initial state of the feedback array
   const [feedback, setFeedback] = useState(FeedbackData)
   const deleteFeedback = (id) => {
     if (window.confirm('Are you sure you want to delete this feedback?')) {
